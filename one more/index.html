@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love 💖</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: pink;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .page {
+      display: none;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .page.active {
+      display: block;
+      
+    }
+
+    
+
+    button {
+      padding: 0.6rem 1.2rem;
+      background-color: #ff99cc;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff66b3;
+    }
+
+    .love-letter {
+      font-style: italic;
+      background: #fffaf0;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .game-box {
+      background: #ffffffcc;
+      padding: 1rem;
+      border-radius: 15px;
+      margin-top: 1rem;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: floatHearts 5s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="heart-container"></div>
+
+  <!-- Page 1 -->
+  <div class="page active" id="page1">
+    <h1>💌It is just for you my love </h1>
+    <p>Hey love, I made this little surprise just for you.    go for next surprise click this button
+    
+    </p>
+    <button onclick="showPage(2)">yes me , click me  💖</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="page" id="page2">
+    <h2>💬 A Letter for You</h2>
+    <div class="love-letter">
+      My dearest love,<br><br>
+      You are the brightest part of my every day. I made this little surprise just for you — to remind you how special you are to me.<br>
+      Thank you for being my everything. 💗<br><br>
+      You make my world brighter every single day. from the moment you came into my life, everything changed in the most beautiful way. Your smile lights up my world, Every second with you feels like a cozy hug for my heart
+     you’re my safe place, my joy, my home. I still get butterflies when I think of you, and I feel so lucky every day to call you mine.
+      Thank you for being so patient, so caring, and how you always know exactly what to say to make me feel better.
+      No matter what the world throws at us, I know we can handle it together. This little website is just a tiny way to remind you how much you mean to me... because you deserve the world 🌎💗
+     Forever and always...
+      Yours always,<br>
+      [Your bubu] 🌷
+    </div>
+    <button onclick="showPage(3)">Next 💕</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="page" id="page3">
+    <h2>🎮 A Little Game</h2>
+    <div class="game-box">
+      <p>Click the button to reveal a surprise! <br><br>
+        Chlo ek game khelte hai <br> click krne se phle card ke last page k niche dekho!! then click here
+      </p>
+      <button onclick="revealSurprise()">Click Me!</button>
+      <p id="surprise-text" style="display:none; margin-top:1rem; font-weight:bold; color:#cc0066;">hehehehheh  Enjoy your gift and <br> <br> if you want to meet me I'm in the DDA market 💘</p>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageNum) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(`page${pageNum}`).classList.add('active');
+    }
+
+    function revealSurprise() {
+      document.getElementById('surprise-text').style.display = 'block';
+    }
+
+    // Floating hearts animation
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.getElementById('heart-container').appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
